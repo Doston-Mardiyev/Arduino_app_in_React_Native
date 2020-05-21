@@ -17,10 +17,7 @@ export class HomeScreen extends Component {
     };
 
     componentDidMount() {
-        this.backHandler = BackHandler.addEventListener(
-            "hardwareBackPress",
-            this.backAction
-        );
+        this.backHandler = BackHandler.addEventListener("hardwareBackPress", this.backAction);
     }
 
     // componentWillUnmount() {
@@ -41,7 +38,7 @@ export class HomeScreen extends Component {
                             <Text style={styles.text}>Arduino IDE</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate('HomeDetail')}>
+                        <TouchableOpacity style={styles.box} onPress={() => { this.backHandler.remove(); this.props.navigation.navigate('HomeDetail') }}>
                             <Image style={{ alignSelf: 'center', width: 60, height: 60, }} source={require('../images/board2.png')} />
                             <Text style={styles.text}> Arduino haqida</Text>
                         </TouchableOpacity>
@@ -49,12 +46,12 @@ export class HomeScreen extends Component {
 
 
                     <View style={{ flexDirection: 'row-reverse', alignSelf: 'center', }} >
-                        <TouchableOpacity style={styles.box1} onPress={() => this.props.navigation.navigate('Loyhalar')}>
+                        <TouchableOpacity style={styles.box1} onPress={() => { this.backHandler.remove(); this.props.navigation.navigate('Loyhalar') }}>
                             <Image style={{ alignSelf: 'center', width: 60, height: 60, }} source={require('../images/Classroom.png')} />
                             <Text style={styles.text}> Darslar</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate('Dasturlash')}>
+                        <TouchableOpacity style={styles.box} onPress={() => { this.backHandler.remove(); this.props.navigation.navigate('Dasturlash') }}>
                             <Image style={{ alignSelf: 'center', width: 60, height: 60, }} source={require('../images/SourceCode.png')} />
                             <Text style={styles.text}>Dasturlash</Text>
                         </TouchableOpacity>
@@ -67,7 +64,7 @@ export class HomeScreen extends Component {
                             <Text style={styles.text}>Harid qilish</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate('Simulator')}>
+                        <TouchableOpacity style={styles.box} onPress={() => { this.backHandler.remove(); this.props.navigation.navigate('Simulator') }}>
                             <Image style={{ alignSelf: 'center', width: 40, height: 40, marginTop: 7 }} source={require('../images/tinkercad.png')} />
                             <Text style={styles.text}>Simuliyator</Text>
                         </TouchableOpacity>
